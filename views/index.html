@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lan="en">
+    <head>
+        <script>            
+            const ws = new WebSocket('ws://localhost:8080')
+
+            ws.onopen = () => {
+                console.log('websocket is connected...')
+                ws.send('connected')
+            }
+
+            ws.onmessage = (ev) => {
+                const data = JSON.parse(ev.data)
+                console.log(data.number)
+            }
+        </script>
+    </head>
+    <body>
+        <script>
+        </script>
+    </body>
+</html>
