@@ -11,16 +11,24 @@ if (typeof web3 !== 'undefined') {
     web3 = new Web3(web3.currentProvider);
   } else {
     // set the provider you want from Web3.providers
-    web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/VYDF3dhGnawnGEaGGnAg"));
+    web3 = new Web3(new Web3.providers.WebsocketProvider("wss://mainnet.infura.io/ws"));
   }
 
-  web3.eth.getBlockNumber(function(error, result){
-    if(!error)
-        console.log(JSON.stringify(result));
-    else
-        console.error(error);
-})
+//   web3.eth.getBlockNumber(function(error, result){
+//     if(!error)
+//         console.log(JSON.stringify(result));
+//     else
+//         console.error(error);
+// })
 
+    web3.eth.subscribe('newBlockHeaders', (error, result) => {
+        if(error){
+            console.log(error)
+        }
+    })
+    .on("data", (blockHeader) => {
+        console.log(blockHeader)
+    })
 app.get('/', (req, res) => {
     res.render('./index.ejs')
 });
