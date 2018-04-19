@@ -21,6 +21,10 @@ if (typeof web3 !== 'undefined') {
         console.error(error);
 })
 
+app.get('/', (req, res) => {
+    res.render('./index.ejs')
+});
+
 app.listen(port, function(){
     console.log('app listening on port:', port);
   });
