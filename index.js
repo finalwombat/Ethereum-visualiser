@@ -1,6 +1,11 @@
+const express = require('express');
+const app = express();
 const Web3 = require('web3')
 
 const key = "https://mainnet.infura.io/VYDF3dhGnawnGEaGGnAg"
+const port = 5000
+
+app.set('view engine', 'ejs')
 
 if (typeof web3 !== 'undefined') {
     web3 = new Web3(web3.currentProvider);
@@ -15,3 +20,7 @@ if (typeof web3 !== 'undefined') {
     else
         console.error(error);
 })
+
+app.listen(port, function(){
+    console.log('app listening on port:', port);
+  });
