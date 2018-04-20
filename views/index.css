@@ -1,0 +1,10 @@
+.blocks {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.block {
+    border: 5px solid blue;
+    width: 100px;
+}
