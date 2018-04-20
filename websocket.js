@@ -20,7 +20,8 @@ if (typeof web3 !== 'undefined') {
     web3 = new Web3(web3.currentProvider);
   } else {
     // set the provider you want from Web3.providers
-    web3 = new Web3(new Web3.providers.WebsocketProvider("wss://mainnet.infura.io/ws"));
+    web3 = new Web3(new Web3.providers.WebsocketProvider("wss://rinkeby.infura.io/ws"));
+    web3Http = new Web3(new Web3.providers.HttpProvider("https://rinkeby.infura.io/VYDF3dhGnawnGEaGGnAg"))
   }
 
   web3.eth.subscribe('newBlockHeaders', (error, result) => {
@@ -29,6 +30,11 @@ if (typeof web3 !== 'undefined') {
     }
 })
 .on("data", (blockHeader) => {
-    console.log(JSON.stringify(blockHeader))
-    wss.broadcast(JSON.stringify(blockHeader))
+    // console.log(JSON.stringify(blockHeader))
+    console.log(blockHeader.number)
+    web3Http.eth.getBlock(blockHeader.number).then( (block) => {
+        console.log('block: ', block)
+        wss.broadcast(JSON.stringify(block))
+    })
+    
 })
