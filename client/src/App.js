@@ -3,6 +3,19 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  componentDidMount() {
+    const ws = new WebSocket('ws://localhost:5000')
+    
+    ws.onopen = () => {
+        console.log('websocket is connected...')
+        ws.send('connected')
+    }
+    ws.onmessage = (ev) => {
+      const data = JSON.parse(ev.data)
+      console.log(data)
+    }
+    
+  }
   render() {
     return (
       <div className="App">
