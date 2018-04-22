@@ -17,11 +17,15 @@ ws.onmessage = (ev) => {
     
     console.log(p)
     
-    p.enter().append("div")
-        .attr("class", "block")
-        .text(function(d) {return "#" + d.number})
+    const newDiv = p.enter().append("div")
+        newDiv.attr("class", "block")
+        newDiv.append("div")
+                .attr("class", "number")
+                .html(function(d) {return "#" + d.number})
+        newDiv.append("div")
+                .attr("class", "transactions")
+                .html(function(d) {return "#" + d.transactions.length})
 
-    p.exit().remove()
 
 
 
