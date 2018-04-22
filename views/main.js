@@ -48,5 +48,27 @@ ws.onmessage = (ev) => {
     // console.log(blocks)
 }
 
+// const dummyData = []
+// const num = 12
+// setInterval(() => {
+//     const p =  d3.select(".blocks")
+//                 .selectAll("div")
+//                 .data(dummyData)
 
+//     if((dummyData.length % num) > 0){
+//         p.enter().append("div")
+//         .attr("class", "block")
+//         .text(function(d) {return d})
+//     } else {
 
+//         p.enter().insert("div", ":first-child")
+//         .attr("class", "block")
+//         .text(function(d) {return d})
+//     }
+//     console.log((dummyData.length % num) > 0)
+//     console.log(p)
+
+//     p.exit().remove()
+//     dummyData.push('#1234567')
+
+// }, 1000)
