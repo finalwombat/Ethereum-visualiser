@@ -6,7 +6,12 @@ const Block =  (props) => {
     return (
       <div className="block">
         <h4># {block.number}</h4>
-        <h4>Transaction: {block.transactions.length}</h4>
+        <summary>Transaction: {block.transactions.length}</summary>
+        <details>
+          <ul>{block.transactions.map((transaction) => {
+            return <li>{transaction}</li>
+          })}</ul>
+        </details>
       </div>
     );
 }
