@@ -3,3 +3,14 @@
     flex-flow: column-reverse;
     border: 2px solid black;
 }
+
+.block {
+    display: flex;
+    padding: 20px;
+    justify-content: center;
+    border: 1px solid black;
+}
+
+.block h4 {
+    margin-left: 20px;
+}
