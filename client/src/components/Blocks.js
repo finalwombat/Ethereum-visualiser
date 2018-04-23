@@ -30,7 +30,7 @@ class Blocks extends Component {
   render() {
     console.log(this.state.blocks)
     const blocksList = this.state.blocks.map((block) => {
-      return <Block number={block.number} />
+      return <Block block={block} />
     })
     return (
       <div className="blocks">
