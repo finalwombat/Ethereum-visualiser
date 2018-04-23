@@ -1,20 +1,15 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Blocks from './components/Blocks'
 
 class App extends Component {
-  componentDidMount() {
-    const ws = new WebSocket('ws://localhost:5000')
-    
-    ws.onopen = () => {
-        console.log('websocket is connected...')
-        ws.send('connected')
+  constructor(props) {
+    super(props)
+    this.state = {
+      blocks: []
     }
-    ws.onmessage = (ev) => {
-      const data = JSON.parse(ev.data)
-      console.log(data)
-    }
-    
+
   }
   render() {
     return (
@@ -23,9 +18,8 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <Blocks blocks={this.state.blocks} />
+        
       </div>
     );
   }
