@@ -12,5 +12,14 @@
 }
 
 .block h4 {
+    margin: 0;
+    margin-left: 20px;
+}
+
+.block summary {
+    margin-left: 20px;
+}
+
+.block details {
     margin-left: 20px;
 }
