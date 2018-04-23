@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Block from './Block'
+import './Blocks.css'
 
 class Blocks extends Component {
   constructor(props) {
