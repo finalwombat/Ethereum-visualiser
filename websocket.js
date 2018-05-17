@@ -31,9 +31,30 @@ if (typeof web3 !== 'undefined') {
 .on("data", (blockHeader) => {
     // console.log(JSON.stringify(blockHeader))
     console.log(blockHeader.number)
-    web3Http.eth.getBlock(blockHeader.number).then( (block) => {
-        console.log('block: ', block)
-        wss.broadcast(JSON.stringify(block))
+    web3Http.eth.getBlock(blockHeader.number)
+        .catch(err => {
+            console.log(err)
+        })
+        .then(block => {
+            if(block){
+                if(block.transactions.length ){
+                    const transactionNumbers = block.transactions
+                    const promises = transactionNumbers.map( transactionNumber => {
+                        return web3Http.eth.getTransaction(transactionNumber)
+                            .catch(err => {
+                                console.log(err)
+                            })
+                            .then((transaction) => {
+                                return transaction
+                            })
+                        })
+                    Promise.all(promises).then(transactions => {
+                        wss.broadcast(JSON.stringify({block, transactions}))
+                    }
+        
+                    )
+                }
+            }  
+        })
+            
     })
-    
-})
