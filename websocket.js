@@ -49,7 +49,7 @@ if (typeof web3 !== 'undefined') {
                             })
                         })
                     Promise.all(promises).then(transactions => {
-                        wss.broadcast(JSON.stringify({block, transactions}))
+                        wss.broadcast(JSON.stringify({blockdata: block, transactions}))
                     }
         
                     )
