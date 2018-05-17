@@ -19,7 +19,6 @@ class Blocks extends Component {
     }
     ws.onmessage = (ev) => {
       const data = JSON.parse(ev.data)
-      console.log(data)
       this.setState(prevState => ({
         blocks: [...prevState.blocks, data]
       }))
