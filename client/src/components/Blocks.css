@@ -1,0 +1,25 @@
+.blocks {
+    display: flex;
+    flex-flow: column-reverse;
+    border: 2px solid black;
+}
+
+.block {
+    display: flex;
+    padding: 20px;
+    justify-content: center;
+    border: 1px solid black;
+}
+
+.block h4 {
+    margin: 0;
+    margin-left: 20px;
+}
+
+.block summary {
+    margin-left: 20px;
+}
+
+.block details {
+    margin-left: 20px;
+}
