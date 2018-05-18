@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import Block from './Block'
 import './Blocks.css'
+import posed, { PoseGroup } from 'react-pose'
+
+const Item = posed.div({
+  enter: { opacity: 1},
+  exit: { opacity: 0 }
+})
 
 class Blocks extends Component {
   constructor(props) {
@@ -29,11 +35,14 @@ class Blocks extends Component {
   render() {
     console.log(this.state.blocks)
     const blocksList = this.state.blocks.map((block) => {
-      return <Block block={block} />
+      return <Item><Block block={block} /></Item>
     })
     return (
       <div className="blocks">
-        {blocksList}
+        <PoseGroup>
+          {blocksList}
+        </PoseGroup>
+
       </div>
     );
   }
