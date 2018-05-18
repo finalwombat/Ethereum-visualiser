@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import TransactionList from './TransactionList'
 
 
 const Block =  (props) => {
@@ -9,9 +10,7 @@ const Block =  (props) => {
         <h4># {block.blockdata.number}</h4>
         <summary>Transaction: {block.transactions.length}</summary>
         <details>
-          <ul>{block.transactions.map((transaction) => {
-            return <li>{transaction.blockHash}</li>
-          })}</ul>
+          <TransactionList transactions={block.transactions} />>
         </details>
       </div>
     );
