@@ -2,11 +2,7 @@ import React, { Component } from 'react';
 import Block from './Block'
 import './Blocks.css'
 import posed, { PoseGroup } from 'react-pose'
-
-const Item = posed.div({
-  enter: { opacity: 1},
-  exit: { opacity: 0 }
-})
+import styled from 'styled-components'
 
 class Blocks extends Component {
   constructor(props) {
@@ -33,9 +29,10 @@ class Blocks extends Component {
   }
  
   render() {
-    console.log(this.state.blocks)
-    const blocksList = this.state.blocks.map((block) => {
-      return <Item><Block block={block} /></Item>
+    const blocksList = this.state.blocks.map((block) => { 
+      const color = getColor(block.transactions.length)
+      console.log(color)
+      return <BlockDiv background={color}><Block block={block} /></BlockDiv>
     })
     return (
       <div className="blocks">
@@ -49,3 +46,38 @@ class Blocks extends Component {
 }
 
 export default Blocks
+
+// component style
+
+const Item = posed.div({
+  enter: { opacity: 1},
+  exit: { opacity: 0 }
+})
+
+const BlockDiv = styled(Item)`
+  background: ${props => props.background};
+  width: 100%;
+  border-radius: 30px;
+`
+
+// helper functions
+
+function getColor(number) {
+
+  const colors = 
+  [
+    "#808080",
+    "#ff00ff",
+    "#7f00ff",
+    "#0080ff",
+    "#00ff80",
+    "#00ff00",
+    "#80ff00",
+    "#ffff00",
+    "#ff8000",
+    "#ff0000"
+  ]
+  number = number / 10
+  if(number > 9 ) number = 9;
+  return colors[Math.floor(number)]
+}
