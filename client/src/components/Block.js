@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import TransactionList from './TransactionList'
-
+import styled from 'styled-components'
 
 const Block =  (props) => {
   console.log("props:", props)
