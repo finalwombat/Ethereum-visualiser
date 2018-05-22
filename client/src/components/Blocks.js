@@ -57,7 +57,7 @@ const Item = posed.div({
 const BlockDiv = styled(Item)`
   background: ${props => props.background};
   width: 100%;
-  border-radius: 30px;
+  border-radius: 20px;
 `
 
 // helper functions
