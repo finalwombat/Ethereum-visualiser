@@ -1,4 +1,4 @@
-.blocks {
+.blocksGroup {
     display: flex;
     flex-flow: column-reverse;
 }

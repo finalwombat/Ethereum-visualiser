@@ -35,12 +35,13 @@ class Blocks extends Component {
       return <BlockDiv background={color}><Block block={block} /></BlockDiv>
     })
     return (
-      <div className="blocks">
-        <PoseGroup>
+      <BlocksDiv className="blocks">
+        <h2>New Blocks</h2>
+        <PoseGroup className="blocksGroup">
           {blocksList}
         </PoseGroup>
 
-      </div>
+      </BlocksDiv>
     );
   }
 }
@@ -49,6 +50,19 @@ export default Blocks
 
 // component style
 
+const BlocksDiv = styled.div`
+  margin-top: 100px;
+  height: 80vh;
+
+  & h2 {
+    margin: 0;
+    padding: 5px;
+    width: 100%;
+    height: 40px;
+    color: white;
+    background: black;
+  }
+`
 const Item = posed.div({
   enter: { opacity: 1},
   exit: { opacity: 0 }
