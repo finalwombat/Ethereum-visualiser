@@ -5,3 +5,10 @@ export const selectBlock = (block) => {
     }
     
 }
+
+export const addBlock = (block) => {
+    return {
+        type: 'ADD_BLOCK',
+        payload: block
+    }
+}
