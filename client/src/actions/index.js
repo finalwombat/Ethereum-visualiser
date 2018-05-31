@@ -1,6 +1,7 @@
-let currentSelection = ''
-
-export const selectItem = id => {
-    type: 'SELECT_ITEM',
-    id
+export const selectBlock = (block) => {
+    return {
+        type: 'SELECT_BLOCK',
+        payload: block
+    }
+    
 }
