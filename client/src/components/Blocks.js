@@ -7,12 +7,10 @@ import { bindActionCreators } from 'redux'
 import posed, { PoseGroup } from "react-pose"
 import styled from "styled-components"
 
-class Blocks extends Component {
-  
-  render() {
-    const blocksList = this.props.blocks.map(block => {
+const Blocks = ({ blocks, selectBlock }) => {
+    const blocksList = blocks.map(block => {
       return (
-        <Item onClick={() => this.props.selectBlock(block)}>
+        <Item onClick={() => selectBlock(block)}>
           <Block block={block} />
         </Item>
       );
@@ -22,8 +20,7 @@ class Blocks extends Component {
         <h2>New Blocks</h2>
         <PoseGroup className="blocksGroup">{blocksList}</PoseGroup>
       </BlocksDiv>
-    );
-  }
+    )
 }
 
 function mapStateToProps(state){
