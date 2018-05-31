@@ -8,30 +8,9 @@ import posed, { PoseGroup } from "react-pose"
 import styled from "styled-components"
 
 class Blocks extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      blocks: []
-    };
-  }
-
-  componentDidMount() {
-    const ws = new WebSocket("ws://localhost:5000");
-
-    ws.onopen = () => {
-      console.log("websocket is connected...");
-      ws.send("connected");
-    };
-    ws.onmessage = ev => {
-      const data = JSON.parse(ev.data);
-      this.setState(prevState => ({
-        blocks: [...prevState.blocks, data]
-      }));
-    };
-  }
-
+  
   render() {
-    const blocksList = this.state.blocks.map(block => {
+    const blocksList = this.props.blocks.map(block => {
       return (
         <Item onClick={() => this.props.selectBlock(block)}>
           <Block block={block} />
