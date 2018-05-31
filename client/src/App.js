@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Blocks from './components/Blocks'
+import ContentArea from './containers/ContentArea'
 
 
 const App = () => {
@@ -10,7 +11,8 @@ const App = () => {
           <h1 className="App-title">Welcome to Blockchain Visualiser</h1>
         </header>
         <main>
-          <Blocks blocks />
+          <Blocks />
+          <ContentArea />
         </main>
       </div>
   )
