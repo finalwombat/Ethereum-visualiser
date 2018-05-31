@@ -1,8 +1,11 @@
-import React, { Component } from "react";
-import Block from "./Block";
-import "./Blocks.css";
-import posed, { PoseGroup } from "react-pose";
-import styled from "styled-components";
+import React, { Component } from "react"
+import Block from "./Block"
+import "./Blocks.css"
+import { connect } from 'react-redux'
+import { selectBlock } from '../actions/index'
+import { bindActionCreators } from 'redux'
+import posed, { PoseGroup } from "react-pose"
+import styled from "styled-components"
 
 class Blocks extends Component {
   constructor(props) {
@@ -30,7 +33,7 @@ class Blocks extends Component {
   render() {
     const blocksList = this.state.blocks.map(block => {
       return (
-        <Item>
+        <Item onClick={() => this.props.selectBlock(block)}>
           <Block block={block} />
         </Item>
       );
@@ -44,7 +47,17 @@ class Blocks extends Component {
   }
 }
 
-export default Blocks;
+function mapStateToProps(state){
+  return {
+    blocks: state.blocks
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ selectBlock: selectBlock}, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Blocks)
 
 // component style
 
