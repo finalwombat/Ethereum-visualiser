@@ -6,9 +6,10 @@ import registerServiceWorker from './registerServiceWorker';
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import rootReducer from './reducers'
+import listener from './middleware/websockets'
 
 const store = createStore(rootReducer)
-
+listener(store.dispatch)
 ReactDOM.render(
 <Provider store={store}>
     <App />
