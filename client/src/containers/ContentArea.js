@@ -1,17 +1,19 @@
-import React from 'react'
-import { connect } from 'react-redux'
+import React from "react";
+import { connect } from "react-redux";
 
-const ContentArea = ({block}) => {
-    console.log("block: ", block)
-    return (
-        <div>Selected block: {block.blockdata ? block.blockdata.number : 'null'}</div>
-    )
-}
+// Displays information from the currently selected block
+const ContentArea = ({ block }) => {
+  return (
+    <div>
+      Selected block: {block.blockdata ? block.blockdata.number : "null"}
+    </div>
+  );
+};
 
 function mapStateToProps(state) {
-    return {
-        block: state.currentSelection
-    }
+  return {
+    block: state.currentSelection
+  };
 }
 
-export default connect(mapStateToProps)(ContentArea)
+export default connect(mapStateToProps)(ContentArea);
