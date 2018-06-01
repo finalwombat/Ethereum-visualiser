@@ -3,8 +3,8 @@ import TransactionList from "./TransactionList";
 import styled from "styled-components";
 
 const Block = props => {
-  console.log("props:", props);
   const block = props.block;
+  // Get background color based on number of transactions
   const color = getColor(block.transactions.length);
   return (
     <BlockDiv className="block" background={color}>
@@ -28,6 +28,7 @@ const BlockDiv = styled.div`
 
 // helper functions
 
+// Select a color based on the number provided
 function getColor(number) {
   const colors = [
     "#808080",
@@ -41,6 +42,7 @@ function getColor(number) {
     "#ff8000",
     "#ff0000"
   ];
+  // Convert to number between 0 - 9
   number = number / 10;
   if (number > 9) number = 9;
   return colors[Math.floor(number)];
