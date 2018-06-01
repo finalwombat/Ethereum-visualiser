@@ -1,10 +1,11 @@
+// select the current (in focus) block
 const selection = (state = {}, action) => {
-    switch (action.type) {
-        case 'SELECT_BLOCK':
-            return action.payload
-        default: 
-            return state
-    }
-}
+  switch (action.type) {
+    case "SELECT_BLOCK":
+      return action.payload;
+    default:
+      return state;
+  }
+};
 
-export default selection
+export default selection;
