@@ -1,18 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
-import { createStore } from 'redux'
-import { Provider } from 'react-redux'
-import rootReducer from './reducers'
-import listener from './middleware/websockets'
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import registerServiceWorker from "./registerServiceWorker";
+import { createStore } from "redux";
+import { Provider } from "react-redux";
+import rootReducer from "./reducers";
+import listener from "./middleware/websockets";
 
-const store = createStore(rootReducer)
-listener(store.dispatch)
+const store = createStore(rootReducer);
+// websocket connection to update blocks
+listener(store.dispatch);
+
 ReactDOM.render(
-<Provider store={store}>
+  <Provider store={store}>
     <App />
-</Provider>, 
-document.getElementById('root'));
+  </Provider>,
+  document.getElementById("root")
+);
 registerServiceWorker();
