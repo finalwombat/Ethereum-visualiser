@@ -20,7 +20,7 @@ if (typeof web3 !== "undefined") {
   web3 = new Web3(web3.currentProvider);
 } else {
   // set the provider you want from Web3.providers
-  // web3 = new Web3(new Web3.providers.WebsocketProvider("wss://rinkeby.infura.io/ws"));
+  web3 = new Web3(new Web3.providers.WebsocketProvider("wss://rinkeby.infura.io/ws"));
   web3Http = new Web3(
     new Web3.providers.HttpProvider(
       "https://rinkeby.infura.io/VYDF3dhGnawnGEaGGnAg"
@@ -28,62 +28,43 @@ if (typeof web3 !== "undefined") {
   );
 }
 
-axios
-  .get(
-    "http://api.etherscan.io/api?module=contract&action=getabi&address=0xfb6916095ca1df60bb79ce92ce3ea74c37c5d359&apikey=9ES2AYEBQFG7277ZI854B8I59IZE9GG65J"
-  )
-  .catch(err => {
-    console.log(err);
+// 
+
+web3.eth.subscribe('newBlockHeaders', (error, result) => {
+      if(error){
+          console.log(error)
+      }
   })
-  .then(response => {
-    let contractABI = "";
-    contractABI = response.data.result;
-    if (contractABI != "") {
-      const myContract = web3Http.eth.contract(contractABI);
-      const myContractInstance = myContract.at(
-        "0xfb6916095ca1df60bb79ce92ce3ea74c37c5d359"
-      );
-      const result = myContractInstance.memberId(
-        "0xfe8ad7dd2f564a877cc23feea6c0a9cc2e783715"
-      );
-      console.log("result: ", result);
-    }
-  })[
-  //   web3.eth.subscribe('newBlockHeaders', (error, result) => {
-  //     if(error){
-  //         console.log(error)
-  //     }
-  // })
-  // .on("data", (blockHeader) => {
-  //     // console.log(JSON.stringify(blockHeader))
-  //     console.log(blockHeader.number)
-  //     web3Http.eth.getBlock(blockHeader.number)
-  //         .catch(err => {
-  //             console.log(err)
-  //         })
-  //         .then(block => {
-  //             if(block){
-  //                 if(block.transactions.length ){
-  //                     const transactionNumbers = block.transactions
-  //                     const promises = transactionNumbers.map( transactionNumber => {
-  //                         return web3Http.eth.getTransaction(transactionNumber)
-  //                             .catch(err => {
-  //                                 console.log(err)
-  //                             })
-  //                             .then((transaction) => {
-  //                                 return transaction
-  //                             })
-  //                         })
-  //                     Promise.all(promises).then(transactions => {
-  //                         wss.broadcast(JSON.stringify({blockdata: block, transactions}))
-  //                     }
+  .on("data", (blockHeader) => {
+      // console.log(JSON.stringify(blockHeader))
+      console.log(blockHeader.number)
+      web3Http.eth.getBlock(blockHeader.number)
+          .catch(err => {
+              console.log(err)
+          })
+          .then(block => {
+              if(block){
+                  if(block.transactions.length ){
+                      const transactionNumbers = block.transactions
+                      const promises = transactionNumbers.map( transactionNumber => {
+                          return web3Http.eth.getTransaction(transactionNumber)
+                              .catch(err => {
+                                  console.log(err)
+                              })
+                              .then((transaction) => {
+                                  return transaction
+                              })
+                          })
+                      Promise.all(promises).then(transactions => {
+                          wss.broadcast(JSON.stringify({blockdata: block, transactions}))
+                      }
 
-  //                     )
-  //                 }
-  //             }
-  //         })
+                      )
+                  }
+              }
+          })
 
-  //     })
+      })
 
   ({
     constant: true,
@@ -326,4 +307,4 @@ axios
     name: "ChangeOfRules",
     type: "event"
   })
-];
+
