@@ -10,9 +10,9 @@ const Block = props => {
     <BlockDiv className="block" background={color}>
       <h4># {block.blockdata.number}</h4>
       <summary>Transaction: {block.transactions.length}</summary>
-      <details>
+      {/* <details>
         <TransactionList transactions={block.transactions} />>
-      </details>
+      </details> */}
     </BlockDiv>
   );
 };
