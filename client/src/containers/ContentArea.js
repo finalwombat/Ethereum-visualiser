@@ -16,12 +16,13 @@ const ContentArea = ({ block }) => {
   return (
     <MainDiv className="contentArea">
       <InfoDiv>
-      <h3>Block Number:</h3> <p>{data.number}</p>
-      <h3>Size:</h3> <p>{data.size}</p>
-      <h3>Gas used:</h3> <p>{data.gasUsed}</p>
-      <h3>Miner:</h3> <p>{data.miner}</p>
+      <div><h3>Block Number:</h3> <p>{data.number}</p></div>
+      <div><h3>Size:</h3> <p>{data.size}</p></div>
+      <div><h3>Gas used:</h3> <p>{data.gasUsed}</p></div>
+      <div><h3>Miner:</h3> <p>{data.miner}</p></div>
+      <div><h3>Transactions:</h3><p>{transactions.length}</p></div>
       </InfoDiv>
-      <TransactionList transactions={transactions} />
+      
     </MainDiv>
   )};
 };
@@ -37,10 +38,22 @@ export default connect(mapStateToProps)(ContentArea);
 const MainDiv = styled.div`
     height: 100%;
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    flex-direction: column;
+    border: 1px solid black;
 `
 const InfoDiv = styled.div`
     display: flex; 
     justify-content: space-around;
+    flex-wrap: wrap;
+
+    & div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 10px;
+    }
+
+    & div p {
+      text-align: center;
+    }
 `
