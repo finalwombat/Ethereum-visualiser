@@ -40,8 +40,8 @@ export default connect(mapStateToProps, mapDispatchToProps)(Blocks);
 // component style
 
 const BlocksDiv = styled.div`
-  margin-top: 100px;
-  height: 80vh;
+  height: 100%;
+  width: 100%;
 
   & h2 {
     margin: 0;
