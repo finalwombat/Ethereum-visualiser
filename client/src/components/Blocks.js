@@ -17,10 +17,13 @@ const Blocks = ({ blocks, selectBlock }) => {
     );
   });
   return (
-    <BlocksDiv className="blocks">
+    <WrapperDiv className="wrapperDiv">
       <h2>New Blocks</h2>
-      <PoseGroup className="blocksGroup">{blocksList}</PoseGroup>
-    </BlocksDiv>
+      <BlocksDiv>
+        <PoseGroup>{blocksList}</PoseGroup>
+      </BlocksDiv>
+    </WrapperDiv>
+    
   );
 };
 
@@ -39,24 +42,26 @@ export default connect(mapStateToProps, mapDispatchToProps)(Blocks);
 
 // component style
 
-const BlocksDiv = styled.div`
+const WrapperDiv = styled.div`
   height: 100%;
   width: 100%;
-
-  & .blocksGroup{
-    display: flex;
-    flex-direction: column-reverse;
-  }
-  
-
+  display: flex;
+  flex-direction: column;
   & h2 {
     margin: 0;
     padding: 5px;
-    width: 100%;
     height: 40px;
     color: white;
     background: black;
   }
+`
+const BlocksDiv = styled.div`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  
 `;
 const Item = posed.div({
   enter: { opacity: 1 },
