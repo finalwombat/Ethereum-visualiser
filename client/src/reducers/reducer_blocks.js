@@ -2,7 +2,7 @@
 const blocks = (state = [], action) => {
   switch (action.type) {
     case "ADD_BLOCK":
-      return [...state, action.payload];
+      return [action.payload, ...state];
     default:
       return state;
   }
