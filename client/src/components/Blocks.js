@@ -11,7 +11,7 @@ const Blocks = ({ blocks, selectBlock }) => {
   // map blocks to animated div list
   const blocksList = blocks.map(block => {
     return (
-      <Item onClick={() => selectBlock(block)}>
+      <Item onClick={() => selectBlock(block)} key={block.blockdata.number}>
         <Block block={block} />
       </Item>
     );
@@ -20,7 +20,7 @@ const Blocks = ({ blocks, selectBlock }) => {
     <WrapperDiv className="wrapperDiv">
       <h2>New Blocks</h2>
       <BlocksDiv>
-        <PoseGroup>{blocksList}</PoseGroup>
+        <PoseGroup >{blocksList}</PoseGroup>
       </BlocksDiv>
     </WrapperDiv>
     
