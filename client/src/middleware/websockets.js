@@ -6,7 +6,7 @@ export default function listener(dispatch) {
 
     // set the provider you want from Web3.providers
     const web3 = new Web3(
-      new Web3.providers.WebsocketProvider("wss://rinkeby.infura.io/_ws/VYDF3dhGnawnGEaGGnAg")
+      new Web3.providers.WebsocketProvider("wss://rinkeby.infura.io/_ws")
     );
     const web3Http = new Web3(
       new Web3.providers.HttpProvider(
