@@ -43,6 +43,12 @@ const BlocksDiv = styled.div`
   height: 100%;
   width: 100%;
 
+  & .blocksGroup{
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  
+
   & h2 {
     margin: 0;
     padding: 5px;
