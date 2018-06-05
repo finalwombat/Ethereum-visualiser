@@ -11,7 +11,7 @@ const App = () => {
         <h1 className="App-title">Welcome to Blockchain Visualiser</h1>
       </header>
       <ContentDiv>
-        <Blocks />
+        <Blocks/>
         <ContentArea />
       </ContentDiv>
     </AppDiv>
@@ -31,7 +31,7 @@ const ContentDiv = styled.div`
     width: 100%;
     height: 100%;
 
-    & .blocks {
+    & .wrapperDiv {
       width: 20%;
       margin-top: 20px;
     }
