@@ -32,7 +32,12 @@ const ContentDiv = styled.div`
     height: 100%;
 
     & .wrapperDiv {
-      width: 20%;
+      width: 20vw;
+      margin-top: 20px;
+    }
+
+    & .contentArea {
+      width: 40vw;
       margin-top: 20px;
     }
 `
