@@ -16,10 +16,10 @@ const ContentArea = ({ block }) => {
   return (
     <MainDiv className="contentArea">
       <InfoDiv>
-      <p>Block Number: {data.number}</p>
-      <p>Size: {data.size}</p>
-      <p>Gas used: {data.gasUsed}</p>
-      <p>Miner: {data.miner}</p>
+      <h3>Block Number:</h3> <p>{data.number}</p>
+      <h3>Size:</h3> <p>{data.size}</p>
+      <h3>Gas used:</h3> <p>{data.gasUsed}</p>
+      <h3>Miner:</h3> <p>{data.miner}</p>
       </InfoDiv>
       <TransactionList transactions={transactions} />
     </MainDiv>
