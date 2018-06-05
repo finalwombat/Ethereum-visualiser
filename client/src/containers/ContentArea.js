@@ -42,6 +42,8 @@ const MainDiv = styled.div`
     border: 1px solid black;
 `
 const InfoDiv = styled.div`
+    width: 100%;
+    height: 100%;
     display: flex; 
     justify-content: space-around;
     flex-wrap: wrap;
