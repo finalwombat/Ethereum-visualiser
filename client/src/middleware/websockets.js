@@ -29,26 +29,7 @@ export default function listener(dispatch) {
         })
         .then(block => {
           if (block) {
-            // Check for transactions
-            if (block.transactions.length) {
-              const transactionNumbers = block.transactions;
-              // Get transaction infromation for each transaction
-              const promises = transactionNumbers.map(transactionNumber => {
-                return web3Http.eth
-                  .getTransaction(transactionNumber)
-                  .catch(err => {
-                    console.log(err);
-                  })
-                  .then(transaction => {
-                    return transaction;
-                  });
-              });
-              Promise.all(promises).then(transactions => {
-                console.log(block.number)
-                const data = { blockdata: block, transactions };
-                dispatch(addBlock(data));
-              });
-            }
+            dispatch(addBlock(block));
           }
         });
     });
