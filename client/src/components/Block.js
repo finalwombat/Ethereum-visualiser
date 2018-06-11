@@ -8,7 +8,7 @@ const Block = props => {
   const color = getColor(block.transactions.length);
   return (
     <BlockDiv className="block" background={color}>
-      <h4># {block.blockdata.number}</h4>
+      <h4># {block.number}</h4>
       <summary>Transaction: {block.transactions.length}</summary>
       {/* <details>
         <TransactionList transactions={block.transactions} />>

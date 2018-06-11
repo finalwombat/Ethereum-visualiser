@@ -11,7 +11,7 @@ const Blocks = ({ blocks, selectBlock }) => {
   // map blocks to animated div list
   const blocksList = blocks.map(block => {
     return (
-      <Item onClick={() => selectBlock(block)} key={block.blockdata.number}>
+      <Item onClick={() => selectBlock(block)} key={block.number}>
         <Block block={block} />
       </Item>
     );
