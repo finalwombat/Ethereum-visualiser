@@ -13,3 +13,11 @@ export const addBlock = block => {
     payload: block
   };
 };
+
+// Update the transaction count
+export const updateTransactionCount = count => {
+  return {
+    type: "UPDATE_TRANSACTION_COUNT",
+    payload: count
+  }
+}
