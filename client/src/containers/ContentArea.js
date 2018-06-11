@@ -36,7 +36,8 @@ const MainDiv = styled.div`
     height: 100%;
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(40, 40, 40, 0.3);
 `
 const InfoDiv = styled.div`
     width: 100%;

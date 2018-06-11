@@ -47,12 +47,14 @@ const WrapperDiv = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(40, 40, 40, 0.3);
   & h2 {
     margin: 0;
-    padding: 5px;
+    margin-bottom: 15px;
+    padding: 15px;
     height: 40px;
-    color: white;
-    background: black;
+    color: #E27D60;
   }
 `
 const BlocksDiv = styled.div`
@@ -60,8 +62,8 @@ const BlocksDiv = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-
-  
+  padding: 10px;
+  overflow-y: scroll;
 `;
 const Item = posed.div({
   enter: { opacity: 1 },
