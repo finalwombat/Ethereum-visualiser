@@ -13,7 +13,7 @@ const ContentArea = ({ block }) => {
   return (
     <MainDiv className="contentArea">
       <InfoDiv>
-      <div><h3>Block Number:</h3> <p>{block.number}</p></div>
+      <div><h1>Block: #</h1> <h2>{block.number}</h2></div>
       <div><h3>Size:</h3> <p>{block.size}</p></div>
       <div><h3>Gas used:</h3> <p>{block.gasUsed}</p></div>
       <div><h3>Miner:</h3> <p>{block.miner}</p></div>
@@ -38,18 +38,20 @@ const MainDiv = styled.div`
     flex-direction: column;
     background: rgba(0, 0, 0, 0.6);
     border: 1px solid rgba(40, 40, 40, 0.3);
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 `
 const InfoDiv = styled.div`
     width: 100%;
     height: 100%;
     display: flex; 
-    justify-content: space-around;
+    flex-direction: column;
     flex-wrap: wrap;
 
     & div {
       display: flex;
       align-items: center;
-      justify-content: space-between;
       margin: 10px;
     }
 
