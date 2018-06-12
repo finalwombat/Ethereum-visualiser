@@ -21,3 +21,11 @@ export const updateTransactionCount = count => {
     payload: count
   }
 }
+
+// Select the current Network
+export const selectNetwork = networkName => {
+  return {
+    type: "SELECT_NETWORK",
+    payload: networkName
+  }
+}
