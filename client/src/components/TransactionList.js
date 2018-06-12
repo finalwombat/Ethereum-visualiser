@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import Transaction from "./Transaction";
 
 // List of transactions
 const TransactionsList = props => {
   const transactions = props.transactions.map(transaction => {
-    return <Transaction data={transaction} />;
+    return;
   });
   return <div className="transactions">{transactions}</div>;
 };
