@@ -1,5 +1,6 @@
 import React from "react"
 import Transactions from "../containers/Transactions"
+import Network from "../containers/Network"
 import styled from 'styled-components'
 
 const Header = () => {
@@ -7,6 +8,7 @@ const Header = () => {
         <HeaderDiv>
             <div className="heading"><h1>Blockchain Visualiser</h1></div>
             <div className="content">
+                <Network />
                 <Transactions />
             </div>
             
