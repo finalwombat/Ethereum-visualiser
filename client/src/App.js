@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import Blocks from "./components/Blocks";
 import ContentArea from "./containers/ContentArea";
+import Transactions from "./containers/Transactions"
 import styled from 'styled-components'
 
 const App = () => {
@@ -13,6 +14,7 @@ const App = () => {
       <ContentDiv>
         <Blocks/>
         <ContentArea />
+        <Transactions />
       </ContentDiv>
     </AppDiv>
   );
