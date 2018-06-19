@@ -3,6 +3,8 @@ const blocks = (state = [], action) => {
   switch (action.type) {
     case "ADD_BLOCK":
       return addBlock(state, action.payload)
+    case 'CLEAR_BLOCKS':
+      return []
     default:
       return state;
   }
@@ -11,7 +13,6 @@ const blocks = (state = [], action) => {
 export default blocks;
 
 function addBlock(state, payload){
-  console.log(payload.number)
 
   // check that the block does not already exist in state
   return state.filter(block => block.number == payload.number).length ? 
