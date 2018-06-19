@@ -29,3 +29,11 @@ export const selectNetwork = networkName => {
     payload: networkName
   }
 }
+
+// Clear all blocks
+export const clearBlocks = () => {
+  return {
+    type: "CLEAR_BLOCKS",
+    payload: null
+  }
+}
