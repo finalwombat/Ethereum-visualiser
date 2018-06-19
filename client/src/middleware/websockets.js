@@ -1,68 +1,91 @@
 import Web3 from "web3";
+import watch from 'redux-watch';
 import { bindActionCreators } from "redux";
 import { addBlock } from "../actions/index";
 import { updateTransactionCount } from "../actions/index"
 
-export default function listener(dispatch) {
+export default function Listener(store, network) {
 
-    // set the provider you want from Web3.providers
-    const web3 = new Web3(
-      new Web3.providers.WebsocketProvider("wss://mainnet.infura.io/_ws")
+    const blockheaderSocket = null
+    const transactionheaderSocket = null
+    const interval = null
+    let transactionCount= 0
+
+     // set the provider you want from Web3.providers
+     const web3 = new Web3(
+      new Web3.providers.WebsocketProvider(`wss://${network}.infura.io/_ws`)
     );
     const web3Http = new Web3(
       new Web3.providers.HttpProvider(
-        "https://mainnet.infura.io/VYDF3dhGnawnGEaGGnAg"
+        `https://${network}.infura.io/VYDF3dhGnawnGEaGGnAg`
       )
     );
 
-  //  subscribe for new block headers
-  web3.eth
-    .subscribe("newBlockHeaders", (error, result) => {
-      if (error) {
-        console.log(error);
-      }
-    })
-    .on("data", blockHeader => {
+    function handleNewBlockHeaders(blockHeader) {
+      console.log('new blockheader', blockHeader)
       web3Http.eth
         .getBlock(blockHeader.number)
-        .catch(err => {
-          console.log(err);
-        })
-        .then(block => {
-          if (block) {
-            dispatch(addBlock(block));
-          }
-        });
-    });
-
-    //  subscribe for new transaction headers
-  let transactions = []
-  // dispatch transaction count every second - then reset
-  setInterval(() => {
-    dispatch(updateTransactionCount(transactions.length))
-    transactions = []
-  }, 1000)
-  web3.eth
-  .subscribe("pendingTransactions", (error, result) => {
-    if (error) {
-      console.log(error);
+            .catch(err => {
+              console.log(err);
+            })
+            .then(block => {
+              if (block) {
+                store.dispatch(addBlock(block));
+              }
+            });
     }
-  })
-  .on("data", transaction => {
-    transactions.push(transaction)
-  });
+    
+    function handleNewTransactions(transactionHeader) {
+      transactionCount ++;
+    }
+
+    const countPerSecond = () => {
+      // dispatch transaction count every second - then reset
+      return setInterval(() => {
+        store.dispatch(updateTransactionCount(transactionCount))
+        console.log('transactionCoinmt', transactionCount)
+        transactionCount = 0;
+      }, 1000)
+    }
+
+    // create new websocket
+    const newWebsocket = (network, task, callback) => {
+        
+
+      //  subscribe for new block headers
+      return web3.eth
+        .subscribe(task, (error, result) => {
+          if (error) {
+            console.log(error);
+          }
+        })
+        .on("data", (result => {
+          callback(result)
+        }))
+      }
+    
+    return {
+    start: (network) => {
+           console.log('start')
+           console.log(this.blockheaderSocket)
+           this.blockheaderSocket = newWebsocket(network, "newBlockHeaders", handleNewBlockHeaders);
+           console.log(this.blockheaderSocket)
+           this.transactionheaderSocket =  newWebsocket(network, "pendingTransactions", handleNewTransactions)
+           this.interval = countPerSecond();
+        },
+    stop: () => {
+      console.log('stop')
+      this.blockheaderSocket.unsubscribe();
+      this.transactionheaderSocket.unsubscribe();
+      clearInterval(this.interval);
+    },
+  }
+
+  
+     
+
+      
+
+  // return object
+  return Listener
 }
-
-// listens for new blocks from server then dispatches action
-// export default function listener(dispatch) {
-//   const ws = new WebSocket("ws://localhost:5000");
-
-//   ws.onopen = () => {
-//     console.log("websocket is connected...");
-//     ws.send("connected");
-//   };
-//   ws.onmessage = message => {
-//     const data = JSON.parse(message.data);
-//     dispatch(addBlock(data));
-//   };
-// }
