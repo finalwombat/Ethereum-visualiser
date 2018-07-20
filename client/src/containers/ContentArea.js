@@ -14,8 +14,9 @@ const ContentArea = ({ block }) => {
     <MainDiv className="contentArea">
       <InfoDiv>
       <div><h1>Block: #</h1> <h2>{block.number}</h2></div>
-      <div><h3>Size:</h3> <p>{block.size}</p></div>
+      <div><h3>Difficulty: </h3> <p>{block.difficulty}</p></div>
       <div><h3>Gas used:</h3> <p>{block.gasUsed}</p></div>
+      <div><h3>Gas limit:</h3> <p>{block.gasLimit}</p></div>
       <div><h3>Miner:</h3> <p>{block.miner}</p></div>
       <div><h3>Transactions:</h3><p>{block.transactions.length}</p></div>
       </InfoDiv>
@@ -36,11 +37,8 @@ const MainDiv = styled.div`
     height: 100%;
     display: flex;
     flex-direction: column;
-    background: rgba(0, 0, 0, 0.6);
-    border: 1px solid rgba(40, 40, 40, 0.3);
-    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    color: white;
+    border: 1px solid #454545;
 `
 const InfoDiv = styled.div`
     width: 100%;
@@ -52,6 +50,7 @@ const InfoDiv = styled.div`
     & div {
       display: flex;
       align-items: center;
+      justify-content: space-around;
       margin: 10px;
     }
 
