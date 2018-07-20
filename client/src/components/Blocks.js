@@ -47,17 +47,14 @@ const WrapperDiv = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  background: rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(40, 40, 40, 0.3);
-  -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-  -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  border: 1px solid #454545;
   & h2 {
     margin: 0;
     margin-bottom: 15px;
     padding: 15px;
     height: 40px;
-    color: #E27D60;
+    color: #ebfbff;
+    text-shadow: 0 0 10px rgba(255,255,255,.1) , 0 0 20px rgba(255,255,255,.1) , 0 0 30px rgba(255,255,255,.1) , 0 0 5px #00ffff  ;
   }
 `
 const BlocksDiv = styled.div`
