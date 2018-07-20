@@ -30,7 +30,7 @@ const ContentDiv = styled.div`
     justify-content: space-around;
     width: 100%;
     height: 100%;
-    background: rgb(211,211,211);
+    background: black;
 
     & .wrapperDiv {
       width: 20vw;
