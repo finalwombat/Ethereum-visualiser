@@ -22,6 +22,7 @@ export default function Listener(store, network) {
   );
 
   function handleNewBlockHeaders(blockHeader) {
+    console.log(blockHeader.number)
     web3Http.eth
       .getBlock(blockHeader.number)
       .catch(err => {
@@ -30,6 +31,8 @@ export default function Listener(store, network) {
       .then(block => {
         if (block) {
           store.dispatch(addBlock(block));
+        } else {
+          console.log('no block!', blockHeader.number)
         }
       });
   }
