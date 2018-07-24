@@ -27,5 +27,5 @@
     "deploy": "gh-pages -d build"
   },
   "proxy": "http://localhost:5000",
-  "homepage": "https://finalwombat.github.io/ethereumVisualiserghp/."
+  "homepage": "https://finalwombat.github.io/ethereumVisualiserghp"
 }
