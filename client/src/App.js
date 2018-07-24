@@ -6,14 +6,13 @@ import ContentArea from "./containers/ContentArea";
 import Transactions from "./containers/Transactions"
 import styled from 'styled-components'
 
+import Main from "./containers/Main"
+
 const App = () => {
   return (
     <AppDiv className="App">
       <Header />
-      <ContentDiv>
-        <Blocks/>
-        <ContentArea />
-      </ContentDiv>
+      <Main />
     </AppDiv>
   );
 };
