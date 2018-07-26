@@ -15,10 +15,10 @@ const Main = ({ blocks, block, isLoading, selectBlock }) => {
       return <PulseLoader color="#ffffff" size="16px" margin="4px"/>
   }else {
     return (
-    <div className="main">
+    <MainDiv className="main">
         <Blocks/>
         <ContentArea/>  
-    </div>
+    </MainDiv>
     )
   }
 };
@@ -36,3 +36,16 @@ function mapDispatchToProps(dispatch) {
   }
   
   export default connect(mapStateToProps, mapDispatchToProps)(Main);
+
+
+const MainDiv = styled.div`
+  display: flex;
+  overflow: hidden;
+  & .blocks{
+    max-width: 40vw;
+  }
+
+  & .ContentArea{
+    width: 100%;
+  }
+`
