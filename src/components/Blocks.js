@@ -17,7 +17,7 @@ const Blocks = ({ blocks, selectBlock }) => {
     );
   });
   return (
-    <WrapperDiv className="wrapperDiv">
+    <WrapperDiv className="blocks">
       <h2>New Blocks</h2>
       <BlocksDiv>
         <PoseGroup >{blocksList}</PoseGroup>
@@ -58,12 +58,36 @@ const WrapperDiv = styled.div`
   }
 `
 const BlocksDiv = styled.div`
-  height: 100%;
+  min-height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
   padding: 10px;
   overflow-y: scroll;
+
+  &::-webkit-scrollbar-track
+  {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+    background-color: #F5F5F5;
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar
+  {
+    width: 10px;
+    background-color: #F5F5F5;
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-thumb
+  {
+    border-radius: 10px;
+    background-color: #FFF;
+    background-image: -webkit-gradient(linear,
+                      40% 0%,
+                      75% 84%,
+                      from(#4D9C41),
+                      to(#19911D),
+                      color-stop(.6,#54DE5D))
+  }
 `;
 const Item = posed.div({
   enter: { opacity: 1 },
