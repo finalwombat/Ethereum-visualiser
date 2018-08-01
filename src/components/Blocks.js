@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import Block from "./Block";
 import "./Blocks.css";
-import { connect } from "react-redux";
-import { selectBlock } from "../actions/index";
-import { bindActionCreators } from "redux";
 import posed, { PoseGroup } from "react-pose";
 import styled from "styled-components";
 
@@ -27,18 +24,8 @@ const Blocks = ({ blocks, selectBlock }) => {
   );
 };
 
-// Connect to redux
-function mapStateToProps(state) {
-  return {
-    blocks: state.blocks
-  };
-}
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ selectBlock: selectBlock }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Blocks);
+export default Blocks
 
 // component style
 
