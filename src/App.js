@@ -1,9 +1,6 @@
 import React from "react";
 import "./App.css";
 import Header from "./components/Header"
-import Blocks from "./components/Blocks";
-import ContentArea from "./containers/ContentArea";
-import Transactions from "./containers/Transactions"
 import styled from 'styled-components'
 
 import Main from "./containers/Main"

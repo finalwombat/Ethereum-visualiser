@@ -5,7 +5,7 @@ import { bindActionCreators } from "redux";
 import styled from 'styled-components';
 
 import Blocks from "../components/Blocks";
-import ContentArea from "./ContentArea";
+import ContentArea from "../components/ContentArea";
 import { PulseLoader } from 'halogenium'
 
 // Displays information from the currently selected block
