@@ -1,8 +1,8 @@
 import React from "react";
 import "./App.css";
-import Header from "./components/Header"
 import styled from 'styled-components'
 
+import Header from "./containers/Header"
 import Main from "./containers/Main"
 
 const App = () => {
