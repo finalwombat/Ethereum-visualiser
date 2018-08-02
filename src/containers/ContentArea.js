@@ -1,12 +1,10 @@
 import React from "react";
-import { connect } from "react-redux";
 import TransactionList from "../components/TransactionList"
 import styled from 'styled-components'
 
 // Displays information from the currently selected block
 const ContentArea = ({ block }) => {
-  console.log('block', block)
-  if(!block.number) {return(
+  if(!block || !block.number) {return(
     <MainDiv className="contentArea"><h1>Select block to start exploring</h1></MainDiv>
   )}
   else {
@@ -25,13 +23,8 @@ const ContentArea = ({ block }) => {
   )};
 };
 
-function mapStateToProps(state) {
-  return {
-    block: state.currentSelection
-  };
-}
 
-export default connect(mapStateToProps)(ContentArea);
+export default ContentArea;
 
 const MainDiv = styled.div`
     height: 100%;

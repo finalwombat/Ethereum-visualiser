@@ -23,7 +23,7 @@ const Main = ({ blocks, block, isLoading, selectBlock, currentNetwork }) => {
     return (
     <MainDiv className="main">
         <Blocks blocks={blocks} selectBlock={selectBlock}/>
-        <ContentArea/>  
+        <ContentArea block={block} />  
     </MainDiv>
     )
   }
