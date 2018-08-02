@@ -1,13 +1,13 @@
 import React from "react"
 import styled from 'styled-components'
 
-const TransactionsCount = (props)=> {
+const TransactionsCount = ({count})=> {
     // Get background color based on number of transactions
-    const color = getColor(props.count);
+    const color = getColor(count);
     return (
         <TransactionCountDiv className="transactionCount">
             <h4>Transactions per second</h4>
-            <Count className="count" color={color}><h1>{props.count} </h1></Count>
+            <Count className="count" color={color}><h1>{count} </h1></Count>
         </TransactionCountDiv>
     )
 }
