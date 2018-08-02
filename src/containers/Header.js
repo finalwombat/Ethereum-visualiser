@@ -3,23 +3,18 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { selectNetwork } from "../actions/index"
 
-import Transactions from "./Transactions"
-import Network from "./Network"
+import Transactions from "../components/Transactions"
+import Network from "../components/Network"
 import styled from 'styled-components'
 
 const Header = ({currentNetwork, selectNetwork, transactionCount}) => {
-    console.log("count", transactionCount)
     return (
         <HeaderDiv>
             <div className="heading"><h1>Blockchain Visualiser</h1></div>
             <div className="content">
-                <div className="network">
-                    <h2>select network</h2>
-                    <Network currentNetwork={currentNetwork} selectNetwork={selectNetwork}/>
-                </div>
+                <Network currentNetwork={currentNetwork} selectNetwork={selectNetwork}/>
                 <Transactions transactionCount={transactionCount}/>
             </div>
-            
         </HeaderDiv>
     )
 }
