@@ -12,11 +12,11 @@ const ContentArea = ({ block }) => {
     <MainDiv className="contentArea">
       <InfoDiv>
       <div><h1>Block: #</h1> <h2>{block.number}</h2></div>
+      <div><h3>Transactions:</h3><p>{block.transactions.length}</p></div>
       <div><h3>Difficulty: </h3> <p>{block.difficulty}</p></div>
       <div><h3>Gas used:</h3> <p>{block.gasUsed}</p></div>
       <div><h3>Gas limit:</h3> <p>{block.gasLimit}</p></div>
       <div><h3>Miner:</h3> <p>{block.miner}</p></div>
-      <div><h3>Transactions:</h3><p>{block.transactions.length}</p></div>
       </InfoDiv>
       
     </MainDiv>
@@ -28,8 +28,7 @@ export default ContentArea;
 
 const MainDiv = styled.div`
     height: 100%;
-    display: flex;
-    flex-direction: column;
+    width: 100%;
     color: white;
     border: 1px solid #454545;
 `
@@ -38,7 +37,6 @@ const InfoDiv = styled.div`
     height: 100%;
     display: flex; 
     flex-direction: column;
-    flex-wrap: wrap;
 
     & div {
       display: flex;
