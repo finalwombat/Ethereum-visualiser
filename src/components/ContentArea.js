@@ -1,26 +1,28 @@
 import React from "react";
 import TransactionList from "../components/TransactionList"
 import styled from 'styled-components'
+import Chart from './Chart'
 
 // Displays information from the currently selected block
-const ContentArea = ({ block }) => {
-  if(!block || !block.number) {return(
-    <MainDiv className="contentArea"><h1>Select block to start exploring</h1></MainDiv>
-  )}
-  else {
+const ContentArea = ({ block, transactionLog }) => {
   return (
     <MainDiv className="contentArea">
-      <InfoDiv>
+      {/* <InfoDiv>
       <div><h1>Block: #</h1> <h2>{block.number}</h2></div>
       <div><h3>Transactions:</h3><p>{block.transactions.length}</p></div>
       <div><h3>Difficulty: </h3> <p>{block.difficulty}</p></div>
       <div><h3>Gas used:</h3> <p>{block.gasUsed}</p></div>
       <div><h3>Gas limit:</h3> <p>{block.gasLimit}</p></div>
       <div><h3>Miner:</h3> <p>{block.miner}</p></div>
-      </InfoDiv>
+      </InfoDiv> */}
+      <div> 
+        <h3>Transactions per second</h3>
+        <Chart data={transactionLog} color="#00ff80"/>
+      </div>
+      
       
     </MainDiv>
-  )};
+    )
 };
 
 
@@ -29,6 +31,7 @@ export default ContentArea;
 const MainDiv = styled.div`
     height: 100%;
     width: 100%;
+    background: black;
     color: white;
     border: 1px solid #454545;
 `
