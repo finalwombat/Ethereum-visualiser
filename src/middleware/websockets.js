@@ -3,7 +3,7 @@ import watch from "redux-watch";
 import { bindActionCreators } from "redux";
 import { addBlock } from "../actions/index";
 import { updateTransactionCount } from "../actions/index";
-import { clearBlocks } from "../actions/index";
+import { resetState } from "../actions/index";
 
 export default function Listener(store, network) {
   const blockheaderSocket = null;
@@ -65,7 +65,7 @@ export default function Listener(store, network) {
 
   return {
     start: network => {
-      store.dispatch(clearBlocks());
+      store.dispatch(resetState());
       this.blockheaderSocket = newWebsocket(
         network,
         "newBlockHeaders",
