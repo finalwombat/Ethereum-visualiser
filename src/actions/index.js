@@ -37,3 +37,11 @@ export const clearBlocks = () => {
     payload: null
   }
 }
+
+// Reset state
+export const resetState = () => {
+  return {
+    type: "RESET_STATE",
+    payload: null
+  }
+}
