@@ -3,7 +3,7 @@ const blocks = (state = [], action) => {
   switch (action.type) {
     case "ADD_BLOCK":
       return addBlock(state, action.payload)
-    case 'CLEAR_BLOCKS':
+    case 'RESET_STATE':
       return []
     default:
       return state;
