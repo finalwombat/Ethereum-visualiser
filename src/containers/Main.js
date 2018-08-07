@@ -9,7 +9,7 @@ import ContentArea from "../components/ContentArea";
 import { PulseLoader } from 'halogenium'
 
 // Displays information from the currently selected block
-const Main = ({ blocks, block, isLoading, selectBlock, currentNetwork }) => {
+const Main = ({ blocks, block, isLoading, selectBlock, currentNetwork, transactionLog }) => {
   
   // check for loading - return jsx
   if(isLoading){
@@ -23,7 +23,7 @@ const Main = ({ blocks, block, isLoading, selectBlock, currentNetwork }) => {
     return (
     <MainDiv className="main">
         <Blocks blocks={blocks} selectBlock={selectBlock}/>
-        <ContentArea block={block} />  
+        <ContentArea block={block} transactionLog={transactionLog}/>  
     </MainDiv>
     )
   }
@@ -34,7 +34,8 @@ function mapStateToProps(state) {
     blocks: state.blocks,
     block: state.currentSelection,
     isLoading: state.isLoading,
-    currentNetwork: state.currentNetwork
+    currentNetwork: state.currentNetwork,
+    transactionLog: state.transactionLog
   };
 }
 
