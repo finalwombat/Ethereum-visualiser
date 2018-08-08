@@ -7,6 +7,7 @@ const Chart = ({data, color}) => {
     return(
         <LineChart width={600} height={200} color="white" data={data}>
             <Line type="monotone" dataKey="uv" stroke={color} />
+            <Tooltip/>
             <XAxis dataKey="name" stroke="white"/>
             <YAxis stroke="white"/>
         </LineChart>
