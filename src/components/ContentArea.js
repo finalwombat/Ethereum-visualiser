@@ -2,7 +2,7 @@ import React from "react";
 import TransactionList from "../components/TransactionList"
 import styled from 'styled-components'
 import Chart from './Chart'
-import {convertData} from '../utils'
+import {convertDataForChart, getTransactionsPerBlock} from '../utils'
 
 // Displays information from the currently selected block
 const ContentArea = ({ blocks, transactionLog }) => {
@@ -18,11 +18,11 @@ const ContentArea = ({ blocks, transactionLog }) => {
       </InfoDiv> */}
       <div> 
         <h3>Transactions per second</h3>
-        <Chart data={convertData(transactionLog)} color="#00ff80"/>
+        <Chart data={convertDataForChart(transactionLog)} color="#00ff80"/>
       </div>
       <div> 
         <h3>Transactions per block</h3>
-        <Chart data={convertData(getTransactionsPerBlock(blocks).reverse())} color="#00ff80"/>
+        <Chart data={convertDataForChart(getTransactionsPerBlock(blocks).reverse())} color="#00ff80"/>
       </div>
       
       
@@ -57,10 +57,3 @@ const InfoDiv = styled.div`
       text-align: center;
     }
 `
-
-function getTransactionsPerBlock(blocks){
-  const result = blocks.map((block) => {
-    return block.transactions.length
-  })
-  return result
-}
