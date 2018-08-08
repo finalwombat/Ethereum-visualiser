@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import Chart from './Chart'
 
 // Displays information from the currently selected block
-const ContentArea = ({ block, transactionLog }) => {
+const ContentArea = ({ blocks, transactionLog }) => {
   return (
     <MainDiv className="contentArea">
       {/* <InfoDiv>
@@ -18,6 +18,10 @@ const ContentArea = ({ block, transactionLog }) => {
       <div> 
         <h3>Transactions per second</h3>
         <Chart data={transactionLog} color="#00ff80"/>
+      </div>
+      <div> 
+        <h3>Transactions per block</h3>
+        <Chart data={getTransactionsPerBlock(blocks)} color="#00ff80"/>
       </div>
       
       
@@ -52,3 +56,10 @@ const InfoDiv = styled.div`
       text-align: center;
     }
 `
+
+function getTransactionsPerBlock(blocks){
+  const result = blocks.map((block) => {
+    return block.transactions.length
+  })
+  return result
+}
