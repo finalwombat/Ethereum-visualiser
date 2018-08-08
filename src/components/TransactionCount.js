@@ -1,5 +1,6 @@
 import React from "react"
 import styled from 'styled-components'
+import {getColor} from '../utils'
 
 const TransactionsCount = ({count})=> {
     // Get background color based on number of transactions
@@ -37,22 +38,3 @@ const Count = styled.div`
     
 
 `
-// Select a color based on the number provided
-function getColor(number) {
-    const colors = [
-      "#ebfbff",
-      "#ff00ff",
-      "#7f00ff",
-      "#0080ff",
-      "#00ff80",
-      "#00ff00",
-      "#80ff00",
-      "#ffff00",
-      "#ff8000",
-      "#ff0000"
-    ];
-    // Convert to number between 0 - 9
-    number = number / 10;
-    if (number > 9) number = 9;
-    return colors[Math.floor(number)];
-  }
