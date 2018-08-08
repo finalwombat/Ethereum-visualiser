@@ -10,9 +10,9 @@ import styled from 'styled-components'
 const Header = ({currentNetwork, selectNetwork, transactionCount}) => {
     return (
         <HeaderDiv>
-            <div className="heading"><h1>Blockchain Visualiser</h1></div>
             <div className="content">
                 <Network currentNetwork={currentNetwork} selectNetwork={selectNetwork}/>
+                <h1>Ethereum Blockchain Visualiser</h1>
                 <Transactions transactionCount={transactionCount}/>
             </div>
         </HeaderDiv>
